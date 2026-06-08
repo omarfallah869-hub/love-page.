@@ -15,24 +15,38 @@
             background-color: #ffb6c1;
             font-family: sans-serif;
             overflow: hidden;
+            background-image: radial-gradient(#fff 10%, transparent 10%), radial-gradient(#fff 10%, transparent 10%);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
         }
         .container {
             text-align: center;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             padding: 25px;
             border-radius: 20px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 25px rgba(216, 27, 96, 0.2);
             width: 300px;
             position: relative;
+            z-index: 10;
         }
         h1 {
             color: #d81b60;
             font-size: 22px;
             margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        .gif-container {
+            width: 100%;
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
         }
         .gif-container img {
-            width: 140px;
-            margin-bottom: 20px;
+            max-width: 160px;
+            max-height: 150px;
+            object-fit: contain;
         }
         .buttons {
             display: flex;
@@ -66,7 +80,8 @@
         <h1 id="question">اياتي تحبيني لو لا؟ 🤔</h1>
         
         <div class="gif-container">
-            <img id="statusGif" src="https://media.tenor.com/images/84102ffc4078be1a208304917f694666/tenor.gif" alt="Cute Cats">
+            <!-- الصورة المتحركة الأولى: القط وهو يطلب بلطف مثل فيديو ريلز تماماً -->
+            <img id="statusGif" src="https://media.tenor.com/9vM7bZ7Y86YAAAAi/peach-goma.gif" alt="Peach Goma Asking">
         </div>
 
         <div class="buttons">
@@ -93,8 +108,9 @@
         }
 
         function selectYes() {
-            document.getElementById('question').innerHTML = " كنت أعرف يا اياتي! وأني هم اموت بيج ياهُيامي 💖✨";
-            document.getElementById('statusGif').src = "https://media.tenor.com/images/33f1b4007621c17666245d8b871217e9/tenor.gif";
+            document.getElementById('question').innerHTML = "كنت أعرف يا اياتي! وأني هم اموت بيج ياهيامي 💖✨";
+            // الصورة المتحركة الثانية: القط وهو يحضن الآخر بحب عند اختيار نعم تماماً كالصورة المرفقة
+            document.getElementById('statusGif').src = "https://media.tenor.com/w4p8bXy_3vMAAAAi/peach-and-goma-peach-goma.gif";
             document.getElementById('noBtn').style.display = 'none';
         }
     </script>
