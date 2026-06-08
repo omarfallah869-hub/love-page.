@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سؤال مهم جداً لإياتي 💖</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffb6c1;
+            font-family: sans-serif;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            width: 300px;
+            position: relative;
+        }
+        h1 {
+            color: #d81b60;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+        .gif-container img {
+            width: 140px;
+            margin-bottom: 20px;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            height: 50px;
+            position: relative;
+        }
+        button {
+            padding: 10px 25px;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        #yesBtn {
+            background-color: #4caf50;
+            color: white;
+        }
+        #noBtn {
+            background-color: #f44336;
+            color: white;
+            transition: all 0.1s ease;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="mainContainer">
+        <h1 id="question">اياتي تحبيني لو لا؟ 🤔</h1>
+        
+        <div class="gif-container">
+            <img id="statusGif" src="https://media.tenor.com/images/84102ffc4078be1a208304917f694666/tenor.gif" alt="Cute Cats">
+        </div>
+
+        <div class="buttons">
+            <button id="yesBtn" onclick="selectYes()">نعم</button>
+            <button id="noBtn" ontouchstart="moveButton(event)" onmouseover="moveButton(event)" onclick="moveButton(event)">لا</button>
+        </div>
+    </div>
+
+    <script>
+        function moveButton(e) {
+            e.preventDefault();
+            const noBtn = document.getElementById('noBtn');
+            
+            const padding = 60;
+            const maxX = window.innerWidth - noBtn.offsetWidth - padding;
+            const maxY = window.innerHeight - noBtn.offsetHeight - padding;
+            
+            const randomX = Math.max(padding, Math.floor(Math.random() * maxX));
+            const randomY = Math.max(padding, Math.floor(Math.random() * maxY));
+            
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+        }
+
+        function selectYes() {
+            document.getElementById('question').innerHTML = " كنت أعرف يا اياتي! وأني هم اموت بيج ياهُيامي 💖✨";
+            document.getElementById('statusGif').src = "https://media.tenor.com/images/33f1b4007621c17666245d8b871217e9/tenor.gif";
+            document.getElementById('noBtn').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
