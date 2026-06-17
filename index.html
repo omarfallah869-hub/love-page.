@@ -3,72 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سؤال مهم جداً لإياتي 💖</title>
+    <title>رسالة خاصة لإياتي 💖</title>
     <style>
         body {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
             background-color: #ffb6c1;
-            font-family: sans-serif;
-            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
             background-image: radial-gradient(#fff 10%, transparent 10%), radial-gradient(#fff 10%, transparent 10%);
             background-size: 30px 30px;
             background-position: 0 0, 15px 15px;
         }
         .container {
             text-align: center;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 25px;
-            border-radius: 20px;
-            box-shadow: 0 8px 25px rgba(216, 27, 96, 0.2);
-            width: 300px;
+            background: rgba(255, 255, 255, 0.96);
+            padding: 30px 20px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(216, 27, 96, 0.25);
+            width: 320px;
             position: relative;
             z-index: 10;
         }
-        h1 { color: #d81b60; font-size: 22px; margin-bottom: 20px; line-height: 1.5; }
-        .gif-container { width: 100%; height: 160px; display: flex; justify-content: center; align-items: center; margin-bottom: 20px; }
-        .gif-container img { max-width: 160px; max-height: 160px; object-fit: contain; }
-        .buttons { display: flex; justify-content: center; gap: 20px; height: 50px; position: relative; }
-        button { padding: 10px 25px; font-size: 18px; border: none; border-radius: 10px; cursor: pointer; font-weight: bold; }
-        #yesBtn { background-color: #4caf50; color: white; }
-        #noBtn { background-color: #f44336; color: white; transition: all 0.1s ease; }
+        .message-text {
+            color: #d81b60;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            white-space: pre-line;
+        }
+        .gif-container {
+            width: 100%;
+            height: 140px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .gif-container img {
+            max-width: 140px;
+            max-height: 140px;
+            object-fit: contain;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            height: 50px;
+            position: relative;
+            margin-top: 15px;
+        }
+        button {
+            padding: 10px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        #yesBtn {
+            background-color: #4caf50;
+            color: white;
+        }
+        #noBtn {
+            background-color: #f44336;
+            color: white;
+            transition: all 0.1s ease;
+            position: absolute;
+        }
+        .name-style {
+            font-size: 24px;
+            color: #ff004f;
+            margin-top: 20px;
+            font-weight: bold;
+            display: none;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .heart {
+            position: fixed;
+            top: -20px;
+            color: #ff004f;
+            font-size: 24px;
+            animation: fall linear forwards;
+            z-index: 1;
+        }
+        @keyframes fall {
+            to { transform: translateY(105vh); }
+        }
     </style>
 </head>
 <body>
 
     <div class="container" id="mainContainer">
-        <h1 id="question">اياتي تحبيني لو لا؟ 🤔</h1>
         <div class="gif-container">
-            <img id="statusGif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3N5bXNxeWphZ3E3dW81Z2p4Ym1jaGZ3ZDV6ZXN0bXlyd3A4cW9pOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/cLS1cfxvGOPVpf9g3y/giphy.gif" alt="Cute Cat">
+            <!-- أفاتار لولو كاتي اللطيفة ترحب في البداية -->
+            <img id="statusGif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM2FwOHI5aWFvczU0dHk1bzdvd3lxeWxlcmM1bWNnaWtxZDB6ZnRsZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/X8sWgZ277A8u3FAnby/giphy.gif" alt="Hello Kitty">
         </div>
-        <div class="buttons">
+
+        <div class="message-text" id="question">
+هلا يالطولك غصن يتمايل بگلبي
+تغيب الروح بغيابك ... وَرِدها
+وكتاب الشوك يمدلل.. وَرٓدها
+روحي بفركتُك يذبل. وَرِدها
+ماي انت وترد الرُوح بْيه
+
+بكثر ما واكف متانيك
+كعد ضلي وبقيت اني
+حبيبي مشتاقلي ؟؟
+        </div>
+
+        <div class="buttons" id="btnGroup">
             <button id="yesBtn" onclick="selectYes()">نعم</button>
             <button id="noBtn" ontouchstart="moveButton(event)" onmouseover="moveButton(event)" onclick="moveButton(event)">لا</button>
         </div>
+
+        <!-- الاسم المزخرف يظهر في الأسفل بعد الموافقة -->
+        <div id="loveName" class="name-style">آياتي🥹❤️</div>
     </div>
+
+    <!-- مقطع أغنية كاظم الساهر - ملك أنا -->
+    <audio id="loveSong" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" preload="auto"></audio>
 
     <script>
         function moveButton(e) {
             e.preventDefault();
             const noBtn = document.getElementById('noBtn');
+            
             const padding = 60;
             const maxX = window.innerWidth - noBtn.offsetWidth - padding;
             const maxY = window.innerHeight - noBtn.offsetHeight - padding;
+            
             const randomX = Math.max(padding, Math.floor(Math.random() * maxX));
             const randomY = Math.max(padding, Math.floor(Math.random() * maxY));
+            
             noBtn.style.position = 'fixed';
             noBtn.style.left = randomX + 'px';
             noBtn.style.top = randomY + 'px';
         }
+
         function selectYes() {
-            document.getElementById('question').innerHTML = " جنت أعرف يا اياتي! وأني هم اموت بيج ياهيامي يابعد لوعات گلبي 💖✨";
-            document.getElementById('statusGif').src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbW90M3I5bXo1M3VpZ3p6ODVwNDg4Y2FicTBybWxsNmNidXpjdW1vciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/KztT2c4u8mYYUiBtOh/giphy.gif";
-            document.getElementById('noBtn').style.display = 'none';
+            // تغيير النص بعد ضغط نعم
+            document.getElementById('question').innerHTML = "مَلكٌ أنا لو تُصبحينَ حَبيبتي..\n وأنا هم أموت بيج يا هيامي ونبض قلبي! 👑💖";
+            
+            // تغيير الأفاتار لـ لولو كاتي تحتفل بالحب وقلوب طائرة بجانبها
+            document.getElementById('statusGif').src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3Z0bjJ6M3pxYnNpZW5kM2YwdDR3dHgyM3gybWF4dnloMDY3ZHV5YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/nU2v8lXfHYu3K6Qc40/giphy.gif";
+            
+            // إخفاء الأزرار وإظهار الاسم المزخرف
+            document.getElementById('btnGroup').style.display = 'none';
+            document.getElementById('loveName').style.display = 'block';
+            
+            // تشغيل مقطع القيصر كاظم الساهر
+            const audio = document.getElementById('loveSong');
+            audio.play().catch(function(error) {
+                console.log("المتصفح يحتاج تفاعل لتشغيل الصوت بشكل كامل.");
+            });
+            
+            // تشغيل تأثير تساقط القلوب
+            setInterval(createHeart, 250);
+        }
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.className = 'heart';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 2 + 2 + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 4000);
         }
     </script>
+
 </body>
 </html>
