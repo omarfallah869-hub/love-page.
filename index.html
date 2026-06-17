@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>إلى آياتي 💖</title>
-    <!-- جلب الخط الكوفي من جوجل -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kufam:wght@600;800&display=swap" rel="stylesheet">
@@ -21,20 +20,18 @@
             position: relative;
             background-color: #ffb6c1;
         }
-        /* خلفية صورة الفتاة تملأ الشاشة */
         .bg-image {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('https://i.postimg.co/g2f0g7f4/3845.jpg');
+            /* تقرأ الصورة المرفوعة في مستودعك مباشرة */
+            background-image: url('girl.jpg');
             background-size: cover;
             background-position: center;
             z-index: 1;
-            transition: filter 0.5s ease;
         }
-        /* طبقة تظليل فوق الصورة لجعل الخط الكوفي واضحاً جداً */
         .overlay {
             position: fixed;
             top: 0;
@@ -93,16 +90,8 @@
             font-weight: bold;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
-        #yesBtn {
-            background-color: #4caf50;
-            color: white;
-        }
-        #noBtn {
-            background-color: #f44336;
-            color: white;
-            transition: all 0.1s ease;
-            position: absolute;
-        }
+        #yesBtn { background-color: #4caf50; color: white; }
+        #noBtn { background-color: #f44336; color: white; transition: all 0.1s ease; position: absolute; }
         .name-style {
             font-size: 26px;
             color: #d81b60;
@@ -124,9 +113,7 @@
             animation: fall linear forwards;
             z-index: 100;
         }
-        @keyframes fall {
-            to { transform: translateY(105vh); }
-        }
+        @keyframes fall { to { transform: translateY(105vh); } }
     </style>
 </head>
 <body>
@@ -136,8 +123,8 @@
 
     <div class="content-wrapper">
         <div class="gif-container">
-            <!-- الـ GIF الأول الأصلي بدون حقوق ويعمل 100% -->
-            <img id="statusGif" src="https://i.postimg.co/7Y63Xvfc/kitty-welcome.gif" alt="Asking GIF">
+            <!-- يقرأ الـ GIF الأول المرفوع في مستودعك -->
+            <img id="statusGif" src="cat1.gif" alt="Asking GIF">
         </div>
 
         <div class="message-text" id="question">هلا يالطولك غصن يتمايل بگلبي
@@ -158,8 +145,8 @@
         <div id="loveName" class="name-style">آياتي🥹❤️</div>
     </div>
 
-    <!-- مقطع كاظم الساهر الصوتي المباشر الذي أرسلته تم ربطه هنا -->
-    <audio id="loveSong" src="https://v.kiwi/v/e9qctf12un8h.mp3" preload="auto"></audio>
+    <!-- يقرأ ملف الصوت المرفوع في مستودعك مباشرة -->
+    <audio id="loveSong" src="song.mp3" preload="auto"></audio>
 
     <script>
         function moveButton(e) {
@@ -176,20 +163,17 @@
         }
 
         function selectYes() {
-            // الواجهة الثانية: تغيير الكلمات حسب طلبك
             document.getElementById('question').innerHTML = "اني وياك وأتحمل كل ضروفك\nلو تغیب سنین صدك ما أعوفك .";
             
-            // تغيير الـ GIF الثاني الأصلي وبدون حقوق
-            document.getElementById('statusGif').src = "https://i.postimg.co/D0m4mG9K/kitty-love.gif";
+            /* يقرأ الـ GIF الثاني المرفوع في مستودعك */
+            document.getElementById('statusGif').src = "cat2.gif";
             
             document.getElementById('btnGroup').style.display = 'none';
             document.getElementById('loveName').style.display = 'block';
             
-            // تشغيل مقطع القيصر كاظم الساهر المرفق
             const audio = document.getElementById('loveSong');
             audio.play().catch(function(error) { console.log("Audio play failed"); });
             
-            // تساقط القلوب
             setInterval(createHeart, 250);
         }
 
