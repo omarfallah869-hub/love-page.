@@ -29,61 +29,22 @@
             position: relative;
             z-index: 10;
         }
-        h1 {
-            color: #d81b60;
-            font-size: 22px;
-            margin-bottom: 20px;
-            line-height: 1.5;
-        }
-        .gif-container {
-            width: 100%;
-            height: 150px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .gif-container img {
-            max-width: 160px;
-            max-height: 150px;
-            object-fit: contain;
-        }
-        .buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            height: 50px;
-            position: relative;
-        }
-        button {
-            padding: 10px 25px;
-            font-size: 18px;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        #yesBtn {
-            background-color: #4caf50;
-            color: white;
-        }
-        #noBtn {
-            background-color: #f44336;
-            color: white;
-            transition: all 0.1s ease;
-        }
+        h1 { color: #d81b60; font-size: 22px; margin-bottom: 20px; line-height: 1.5; }
+        .gif-container { width: 100%; height: 160px; display: flex; justify-content: center; align-items: center; margin-bottom: 20px; }
+        .gif-container img { max-width: 160px; max-height: 160px; object-fit: contain; }
+        .buttons { display: flex; justify-content: center; gap: 20px; height: 50px; position: relative; }
+        button { padding: 10px 25px; font-size: 18px; border: none; border-radius: 10px; cursor: pointer; font-weight: bold; }
+        #yesBtn { background-color: #4caf50; color: white; }
+        #noBtn { background-color: #f44336; color: white; transition: all 0.1s ease; }
     </style>
 </head>
 <body>
 
     <div class="container" id="mainContainer">
         <h1 id="question">اياتي تحبيني لو لا؟ 🤔</h1>
-        
         <div class="gif-container">
-            <!-- الصورة المتحركة الأولى: القط وهو يطلب بلطف مثل فيديو ريلز تماماً -->
-            <img id="statusGif" src="https://media.tenor.com/9vM7bZ7Y86YAAAAi/peach-goma.gif" alt="Peach Goma Asking">
+            <img id="statusGif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3N5bXNxeWphZ3E3dW81Z2p4Ym1jaGZ3ZDV6ZXN0bXlyd3A4cW9pOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/cLS1cfxvGOPVpf9g3y/giphy.gif" alt="Cute Cat">
         </div>
-
         <div class="buttons">
             <button id="yesBtn" onclick="selectYes()">نعم</button>
             <button id="noBtn" ontouchstart="moveButton(event)" onmouseover="moveButton(event)" onclick="moveButton(event)">لا</button>
@@ -94,26 +55,20 @@
         function moveButton(e) {
             e.preventDefault();
             const noBtn = document.getElementById('noBtn');
-            
             const padding = 60;
             const maxX = window.innerWidth - noBtn.offsetWidth - padding;
             const maxY = window.innerHeight - noBtn.offsetHeight - padding;
-            
             const randomX = Math.max(padding, Math.floor(Math.random() * maxX));
             const randomY = Math.max(padding, Math.floor(Math.random() * maxY));
-            
             noBtn.style.position = 'fixed';
             noBtn.style.left = randomX + 'px';
             noBtn.style.top = randomY + 'px';
         }
-
         function selectYes() {
-            document.getElementById('question').innerHTML = "كنت أعرف يا اياتي! وأني هم اموت بيج ياهيامي 💖✨";
-            // الصورة المتحركة الثانية: القط وهو يحضن الآخر بحب عند اختيار نعم تماماً كالصورة المرفقة
-            document.getElementById('statusGif').src = "https://media.tenor.com/w4p8bXy_3vMAAAAi/peach-and-goma-peach-goma.gif";
+            document.getElementById('question').innerHTML = " جنت أعرف يا اياتي! وأني هم اموت بيج ياهيامي يابعد لوعات گلبي 💖✨";
+            document.getElementById('statusGif').src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbW90M3I5bXo1M3VpZ3p6ODVwNDg4Y2FicTBybWxsNmNidXpjdW1vciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/KztT2c4u8mYYUiBtOh/giphy.gif";
             document.getElementById('noBtn').style.display = 'none';
         }
     </script>
-
 </body>
 </html>
