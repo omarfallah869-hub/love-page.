@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>رسالة خاصة لإياتي 💖</title>
+    <title>إلى آياتي 💖</title>
+    <!-- جلب الخط الكوفي من جوجل -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kufam:wght@600;800&display=swap" rel="stylesheet">
     <style>
         body {
             display: flex;
@@ -12,41 +16,63 @@
             justify-content: center;
             min-height: 100vh;
             margin: 0;
-            background-color: #ffb6c1;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Kufam', sans-serif;
             overflow-x: hidden;
-            /* خلفية وردية بالكامل مزخرفة بقلوب ناعمة بدون أي صناديق بيضاء */
-            background-image: radial-gradient(#fff 10%, transparent 10%), radial-gradient(#fff 10%, transparent 10%);
-            background-size: 30px 30px;
-            background-position: 0 0, 15px 15px;
+            position: relative;
+            background-color: #ffb6c1;
+        }
+        /* خلفية صورة الفتاة تملأ الشاشة */
+        .bg-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://i.postimg.co/g2f0g7f4/3845.jpg');
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+            transition: filter 0.5s ease;
+        }
+        /* طبقة تظليل فوق الصورة لجعل الخط الكوفي واضحاً جداً */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 182, 193, 0.4);
+            z-index: 2;
         }
         .content-wrapper {
             text-align: center;
-            padding: 20px;
-            width: 320px;
+            padding: 25px;
+            width: 310px;
             position: relative;
             z-index: 10;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
         }
         .message-text {
             color: #d81b60;
-            font-size: 17px;
-            font-weight: bold;
+            font-size: 16px;
+            font-weight: 600;
             line-height: 1.8;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             white-space: pre-line;
-            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
         }
         .gif-container {
             width: 100%;
-            height: 160px;
+            height: 140px;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
         .gif-container img {
-            max-width: 160px;
-            max-height: 160px;
+            max-width: 140px;
+            max-height: 140px;
             object-fit: contain;
         }
         .buttons {
@@ -63,6 +89,7 @@
             border: none;
             border-radius: 12px;
             cursor: pointer;
+            font-family: 'Kufam', sans-serif;
             font-weight: bold;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
@@ -77,12 +104,11 @@
             position: absolute;
         }
         .name-style {
-            font-size: 28px;
+            font-size: 26px;
             color: #d81b60;
-            margin-top: 25px;
-            font-weight: bold;
+            margin-top: 20px;
+            font-weight: 800;
             display: none;
-            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
             animation: pulse 1.5s infinite;
         }
         @keyframes pulse {
@@ -96,7 +122,7 @@
             color: #ff004f;
             font-size: 24px;
             animation: fall linear forwards;
-            z-index: 1;
+            z-index: 100;
         }
         @keyframes fall {
             to { transform: translateY(105vh); }
@@ -105,10 +131,13 @@
 </head>
 <body>
 
+    <div class="bg-image" id="bgImg"></div>
+    <div class="overlay"></div>
+
     <div class="content-wrapper">
         <div class="gif-container">
-            <!-- لولو كاتي ترحب بلطف في الواجهة الملونة بالكامل -->
-            <img id="statusGif" src="https://i.postimg.co/7Y63Xvfc/kitty-welcome.gif" alt="Hello Kitty">
+            <!-- الـ GIF الأول الأصلي بدون حقوق ويعمل 100% -->
+            <img id="statusGif" src="https://i.postimg.co/7Y63Xvfc/kitty-welcome.gif" alt="Asking GIF">
         </div>
 
         <div class="message-text" id="question">هلا يالطولك غصن يتمايل بگلبي
@@ -126,11 +155,10 @@
             <button id="noBtn" ontouchstart="moveButton(event)" onmouseover="moveButton(event)" onclick="moveButton(event)">لا</button>
         </div>
 
-        <!-- الاسم المزخرف يظهر في الواجهة الثانية بالأسفل -->
         <div id="loveName" class="name-style">آياتي🥹❤️</div>
     </div>
 
-    <!-- المقطع الصوتي لكاظم الساهر الذي أرسلته تم دمجه هنا مباشرة -->
+    <!-- مقطع كاظم الساهر الصوتي المباشر الذي أرسلته تم ربطه هنا -->
     <audio id="loveSong" src="https://v.kiwi/v/e9qctf12un8h.mp3" preload="auto"></audio>
 
     <script>
@@ -148,23 +176,20 @@
         }
 
         function selectYes() {
-            // الواجهة الثانية: تغيير النص حسب طلبك تماماً
+            // الواجهة الثانية: تغيير الكلمات حسب طلبك
             document.getElementById('question').innerHTML = "اني وياك وأتحمل كل ضروفك\nلو تغیب سنین صدك ما أعوفك .";
             
-            // تغيير صورة لولو كاتي وهي تحتفل بالحب وقلوب طائرة بجانبها
+            // تغيير الـ GIF الثاني الأصلي وبدون حقوق
             document.getElementById('statusGif').src = "https://i.postimg.co/D0m4mG9K/kitty-love.gif";
             
-            // إخفاء الأزرار وإظهار الاسم المزخرف
             document.getElementById('btnGroup').style.display = 'none';
             document.getElementById('loveName').style.display = 'block';
             
-            // تشغيل صوت أغنية القيصر
+            // تشغيل مقطع القيصر كاظم الساهر المرفق
             const audio = document.getElementById('loveSong');
-            audio.play().catch(function(error) {
-                console.log("المتصفح يطلب ضغط الزر أولاً ليشتغل الصوت.");
-            });
+            audio.play().catch(function(error) { console.log("Audio play failed"); });
             
-            // تشغيل تأثير تساقط القلوب
+            // تساقط القلوب
             setInterval(createHeart, 250);
         }
 
